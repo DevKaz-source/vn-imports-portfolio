@@ -1,43 +1,45 @@
-# VN Imports — portfólio
+**English** · [Português (Brasil)](README.pt-BR.md)
 
-E-commerce de streetwear com direção visual em preto e branco, catálogo responsivo e painel administrativo. Esta edição é **exclusivamente demonstrativa**, feita para explorar a experiência e avaliar o código localmente.
+# VN Imports — Portfolio
+
+A streetwear e-commerce project with monochrome art direction, a responsive storefront, and an admin dashboard. This edition is **for demonstration only**, designed for exploring the experience and reviewing the code locally.
 
 **Next.js 16 · React 19 · TypeScript · Tailwind CSS · Vitest · Playwright**
 
-![Vitrine VN Imports em desktop](docs/home-desktop.jpg)
+![VN Imports desktop storefront](docs/home-desktop.jpg)
 
-## O projeto
+## About the project
 
-Uma vitrine editorial com fluxo completo de compra simulada: descoberta de peças, escolha de variação, sacola persistente, cupom, frete demonstrativo e acompanhamento do pedido. O painel permite administrar o catálogo e acompanhar as mudanças no estoque.
+An editorial storefront with a complete simulated shopping flow: product discovery, variant selection, a persistent shopping bag, coupons, demo shipping, and order tracking. The admin dashboard supports catalog management and inventory history.
 
-| Experiência         | Implementação                                                         |
-| ------------------- | --------------------------------------------------------------------- |
-| Vitrine             | Layout responsivo, drops, categorias, lookbook, busca e filtros       |
-| Produto             | Variações, disponibilidade por tamanho, guia de medidas e zoom        |
-| Compra simulada     | Sacola, favoritos, cupom, frete e pedido visitante com acesso privado |
-| Administração local | Login, produtos, fotos, estoque, pedidos e configurações              |
-| Regras comerciais   | Valores em centavos, reserva de estoque, idempotência e histórico     |
-| Qualidade           | Validação com Zod, testes de domínio, banco, segurança e navegador    |
+| Experience | Implementation |
+| --- | --- |
+| Storefront | Responsive layout, drops, categories, lookbook, search, and filters |
+| Product | Variants, stock availability by size, size guide, and image zoom |
+| Simulated checkout | Shopping bag, favorites, coupons, shipping, and guest orders with private access |
+| Local administration | Login, products, photos, inventory, orders, and settings |
+| Commerce rules | Amounts stored in cents, stock reservations, idempotency, and history |
+| Quality | Zod validation and domain, database, security, and browser tests |
 
 <details>
-<summary>Veja a versão mobile</summary>
+<summary>View the mobile storefront</summary>
 
-![Vitrine em um celular](docs/home-mobile.png)
+![Mobile storefront](docs/home-mobile.png)
 
 </details>
 
 <details>
-<summary>Veja a página de produto</summary>
+<summary>View the product page</summary>
 
-![Produto e variações](docs/produto.png)
+![Product page and variants](docs/produto.png)
 
 </details>
 
-As capturas mostram a edição demonstrativa com o catálogo ilustrativo. Fotografias de moda foram geradas para demonstração; preços e estoque são fictícios. O logo da VN faz parte da identidade fornecida para o projeto.
+The screenshots show the demo edition and its sample catalog. Fashion photographs were generated for demonstration; prices and stock are fictional. The VN logo belongs to the brand identity supplied for the project.
 
-## Executar localmente
+## Run locally
 
-Requisito: **Node.js 24 LTS** e npm.
+Requirements: **Node.js 24 LTS** and npm.
 
 ```bash
 git clone https://github.com/DevKaz-source/vn-imports-portfolio.git
@@ -47,29 +49,31 @@ npm run setup
 npm run dev
 ```
 
-No Windows PowerShell, use `npm.cmd` no lugar de `npm` se houver bloqueio da política de scripts. Não é preciso desativar essa proteção.
+On Windows PowerShell, use `npm.cmd` instead of `npm` if the script execution policy blocks the command. There is no need to disable that protection.
 
-Abra [localhost:3000](http://localhost:3000). O painel fica em [localhost:3000/admin](http://localhost:3000/admin). `setup` gera um acesso exclusivo para a sua instalação e salva as credenciais em `.data/acesso-local.txt`. Não existe uma senha administrativa universal.
+Open [localhost:3000](http://localhost:3000). The admin dashboard is at [localhost:3000/admin](http://localhost:3000/admin). `setup` generates credentials unique to your installation and saves them in `.data/acesso-local.txt`. There is no shared default admin password.
 
-O servidor padrão escuta apenas em `127.0.0.1`. Os dados de teste ficam na pasta `.data` da sua máquina; nenhum banco externo é necessário. Para reiniciar o catálogo, pare o servidor e remova somente `.data/store.json`. Mantenha `.env.local` e `.data/acesso-local.txt` para preservar seu acesso.
+The server listens on `127.0.0.1` by default. Demo data stays in the `.data` folder on your machine; no external database is required. To reset the catalog, stop the server and remove only `.data/store.json`. Keep `.env.local` and `.data/acesso-local.txt` to preserve your login.
 
-## Roteiro de demonstração
+The demo interface is in Brazilian Portuguese. The walkthrough below keeps the on-screen product and button names so you can find them easily.
 
-1. Abra **Camiseta Heavyweight**, escolha o tamanho P e adicione à sacola. O tamanho M começa indisponível.
-2. Vá ao checkout e use somente dados fictícios. O endereço é preenchido manualmente; não há consulta externa de CEP nesta edição.
-3. Calcule o frete demonstrativo e teste o cupom `VNDEMO10`, limitado a um uso por e-mail.
-4. Crie o pedido e use **Simular pagamento aprovado**. Nenhuma cobrança ocorre.
-5. No painel, confira o pedido, envie uma imagem de teste e faça um ajuste de estoque com motivo.
+## Demo walkthrough
 
-## Limites desta edição
+1. Open **Camiseta Heavyweight**, select size **P** (small), and add it to your bag. Size **M** (medium) starts out of stock.
+2. Proceed to checkout and use fictional information only. Enter the address manually; this edition makes no external postal-code lookup.
+3. Calculate demo shipping and try coupon `VNDEMO10`, limited to one use per email address.
+4. Create the order and click **Simular pagamento aprovado** (simulate an approved payment). No charge is made.
+5. In the admin dashboard, inspect the order, upload a test image, and adjust stock with a reason.
 
-- O código mantém o modo demo mesmo que alguém defina `STORE_MODE=live`; a configuração incompatível é recusada.
-- Adaptadores e esquema SQL permanecem como referência de arquitetura. Esta edição não habilita pagamentos, frete comercial, Supabase hospedado ou webhooks comerciais.
-- Não publique este servidor de demonstração com dados pessoais ou como loja real. A persistência usa arquivos locais, adequada à avaliação em um único processo.
-- GitHub hospeda o código e esta apresentação. A aplicação precisa de Node.js e não é uma exportação estática para GitHub Pages.
-- Não há credenciais, pedidos reais, arquivos de ambiente privados ou uploads de clientes neste repositório.
+## Scope and limitations
 
-## Verificação
+- The code keeps demo mode enabled even if someone sets `STORE_MODE=live`; incompatible configuration is rejected.
+- Provider adapters and the SQL schema remain as architectural references. This edition does not enable real payments, commercial shipping, hosted Supabase, or payment-provider webhooks.
+- Do not deploy this demo server with personal data or as a live store. Persistence uses local files and is intended for evaluation in a single process.
+- GitHub hosts the source code and this presentation. The application requires Node.js and is not a static export for GitHub Pages.
+- This repository contains no private credentials, real orders, private environment files, or customer uploads.
+
+## Verification
 
 ```bash
 npm run check:public
@@ -79,20 +83,20 @@ npx playwright install chromium
 npm run test:e2e
 ```
 
-`check:public` inspeciona os arquivos rastreados pelo Git e procura arquivos privados e padrões comuns de credenciais. O CI repete essa verificação, a auditoria, lint, tipos, testes, build e fluxos de navegador. Dependabot acompanha dependências npm e ações do GitHub.
+`check:public` inspects Git-tracked files for private files and common credential patterns. The CI workflow is configured to run that check, the dependency audit, linting, type checks, tests, a production build, and browser flows. Dependabot tracks npm dependencies and GitHub Actions.
 
-O aviso de descontinuação do ESLint 9 pode aparecer: ele permanece por compatibilidade com os plugins atuais. Não use `npm audit fix --force`. Os resultados estão em [VALIDACAO.md](docs/VALIDACAO.md).
+An ESLint 9 deprecation warning may appear: that version is retained for compatibility with the current plugins. Do not run `npm audit fix --force`. Recorded results are available in [VALIDACAO.md](docs/VALIDACAO.md) (Brazilian Portuguese).
 
-## Organização
+## Project structure
 
-| Diretório          | Responsabilidade                         |
-| ------------------ | ---------------------------------------- |
-| `src/app`          | Páginas e endpoints                      |
-| `src/components`   | Vitrine, checkout e administração        |
-| `src/domain`       | Tipos, validações e regras comerciais    |
-| `src/server`       | Sessões, estoque, persistência e upload  |
-| `src/integrations` | Adaptadores de referência e simulação    |
-| `supabase`         | Esquema SQL de referência                |
-| `tests`            | Testes unitários, integração e navegador |
+| Directory | Responsibility |
+| --- | --- |
+| `src/app` | Pages and API endpoints |
+| `src/components` | Storefront, checkout, and admin UI |
+| `src/domain` | Types, validation, and commerce rules |
+| `src/server` | Sessions, inventory, persistence, and uploads |
+| `src/integrations` | Reference provider adapters and simulations |
+| `supabase` | Reference SQL schema |
+| `tests` | Unit, integration, and browser tests |
 
-Leia [SECURITY.md](SECURITY.md) para as proteções e os limites da demonstração. A marca, o logo e os materiais visuais são apresentados como parte deste projeto; a publicação não transfere os direitos sobre a identidade da VN Imports.
+Read [SECURITY.md](SECURITY.md) (Brazilian Portuguese) for the demo's protections and limitations. The brand, logo, and visual materials are presented as part of this project; publication does not transfer rights to the VN Imports brand identity.
