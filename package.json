@@ -1,0 +1,57 @@
+{
+  "name": "vn-imports-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --hostname 127.0.0.1",
+    "build": "next build",
+    "start": "next start --hostname 127.0.0.1",
+    "lint": "eslint . --max-warnings=0",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "playwright test",
+    "setup": "node scripts/setup.mjs",
+    "check": "npm run lint && npm run typecheck && npm test && npm run build",
+    "audit:production": "npm audit --omit=dev --audit-level=high",
+    "audit:dependencies": "npm audit --audit-level=high",
+    "check:public": "node scripts/check-publication.mjs"
+  },
+  "dependencies": {
+    "@fontsource/barlow-condensed": "^5.2.6",
+    "@fontsource/manrope": "^5.2.7",
+    "@radix-ui/react-dialog": "^1.1.15",
+    "@radix-ui/react-tabs": "^1.1.13",
+    "@supabase/ssr": "0.12.7",
+    "@supabase/supabase-js": "2.117.2",
+    "@tailwindcss/postcss": "^4.1.0",
+    "lucide-react": "^0.577.0",
+    "next": "16.4.3",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "server-only": "^0.0.1",
+    "sharp": "0.35.5",
+    "tailwindcss": "^4.1.0",
+    "zod": "^4.6.6"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.11.0",
+    "@electric-sql/pglite": "^0.3.14",
+    "@playwright/test": "^1.58.0",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "eslint": "^9.39.0",
+    "eslint-config-next": "16.4.3",
+    "lighthouse": "^13.0.3",
+    "prettier": "^3.9.9",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.12",
+    "chrome-launcher": "^1.2.2"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true,
+    "unrs-resolver@1.12.2": true
+  },
+  "description": "Demonstração local de e-commerce streetwear com Next.js e TypeScript."
+}
